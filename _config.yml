@@ -1,6 +1,5 @@
-#Site Settings
 title: "Dominique Bradshaw's Portfolio"
 description: "Bachelors of Science, Data Science 2026 Candidate | Creative Problem Solver | AI Enthusiast
+baseurl: "/main"
 url: "https://mbdominique.github.io"
-
 theme: jekyll-theme-merlot

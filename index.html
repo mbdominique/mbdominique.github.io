@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominique Bradshaw's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f7e7ce, #fcd5ce);
+            cursor: url('heart-cursor.png'), auto;
+        }
+        header {
+            color: #333;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #d67b9d;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .project-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #fcd5ce;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border-radius: 15px;
+        }
+        .project-box:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 182, 193, 0.9); /* Light pink */
+        }
+        .project-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d67b9d;
+        }
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            border-radius: 15px;
+        }
+        .project-box:hover .project-overlay {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dominique Bradshaw's Portfolio</h1>
+    <p>Explore my work and projects below</p>
+</header>
+
+<div class="container">
+    <a href="projects/uber-lyft.html" class="project-box">
+        <div class="project-title">Uber vs. Lyft Price Analysis</div>
+        <div class="project-overlay">Click to view details</div>
+    </a>
+    <a href="projects/melbourne-housing.html" class="project-box">
+        <div class="project-title">Melbourne Housing Market Prediction</div>
+        <div class="project-overlay">Click to view details</div>
+    </a>
+    <a href="projects/spotify-playlist.html" class="project-box">
+        <div class="project-title">Spotify Playlist Recommendation</div>
+        <div class="project-overlay">Click to view details</div>
+    </a>
+    <a href="projects/leetcode-tracker.html" class="project-box">
+        <div class="project-title">The Internship Hub</div>
+        <div class="project-overlay">Click to view details</div>
+    </a>
+</div>
+
+</body>
+</html>

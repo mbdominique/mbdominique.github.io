@@ -76,3 +76,7 @@ p {
 .project-box:hover .project-overlay {
     display: flex;
 }
+.project-description {
+    max-width: 100%; /* Ensure it fits within the container */
+    overflow-wrap: break-word; /* Break long words if needed */
+}

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Portfolio"
+title: "Dominique Bradshaw's Portfolio"
 ---
 
 <!DOCTYPE html>
@@ -10,84 +10,31 @@ title: "Portfolio"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #f8f4e3, #f7c6c7);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .project {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-            transition: transform 0.3s;
-        }
-        .project:hover {
-            transform: scale(1.02);
-        }
-        .project-title {
-            font-size: 24px;
-            margin: 0;
-        }
-        .project-details {
-            display: none;
-        }
-        .project-box {
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        .project-box.active .project-details {
-            display: block;
-        }
-        .cursor-heart {
-            cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHBhdGggZD0iTTEuMzk2Niw2LjYyNzFsNC4yMjI5LDQuMzYzNGM0LjA5NSw0LjA2NywyLjA2Nyw3LjQwMDQsNC40MDA5YzEuNjUzLDEuMzA0MywyLjQ5NywyLjE1NzksMy4wMTUsNDFtMy40NjY3LDMuNzgyNWwzLjA4MDksMy41MTMyYy0yLjAzNiwxLjczMTIsLTQuNTYyMywyLjA5NywtNi4yMzM2bC0zLjAxNTUsMy41NDMwYy0yLjA2NiwxLjcyNjQsLTQuNTYzMywtMi4wNzgtNi4yNTY0bC0zLjA1MjksMy41MzMzYy0xLjI4MTIsMS44NzM3LC00LjA5NzUsMi43MTYtNi4yNDQxYzIuMDE0LDEuNjM0MiwyLjk2MjIsMi4xNzc2LC0yLjA1MDEsNC4wNDQ4bC0yLjAzNDIsMy40NjA2Yy00LjA0MTgsMS4zOTcsLTUuNTI5MywxLjgxOSwtNi40MTk2bC0zLjA3MDYsMy41NTU0Yy0xLjA0MSwxLjc1NzIsLTMuNTIxNCwyLjE3NSwtNi4yMjAyYy0yLjA5NywtMi42MzEsLTQuMTc0MywyLjAwMSwtNi4yMzM2bC03LjAzNjcsNC40NzA4YzAsMCwwLjA5NywtMC4yNjMzLDAuMzYzNCwzLjQ3NiwzLjA1MjksMy40NjA2bDMuNzcxMywzLjM4NTcsMS42NzM5LDEuNTM0Niw0LjA5NTksMi40NTk3LDQuMzYzNGwzLjA4MDksMy41MTMyYy0yLjAzNiwxLjczMTIsLTQuNTYyMywyLjA5NywtNi4yMzM2bDMuNTAxOCwyLjk5NjVjLTUuMzg1NSwxLjUyNiw5LjAwOTksMi4zMTgsMi40NjI1YzEuMjQ0LDIuMTAyOCwxLjgxOTQsMy41MTUsNC4wNDQ4bDAsMi40MDk2YzAsMCwwLDAuMDk5LDEuMjMzNiwzLjQ3OSw0LjA5NiwxLjY4NiwxLjk3Niw0LjA5OSwyLjI3MmwtMy4wMTUsMy41MzMzYzIuMDE1LDEuNzE2LDIuMDY2LDIuMTczLDEuMzA0Myw0LjA5NSw2LjYyNzF6IiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+'), auto;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Here’s an overview of my projects:</p>
-
-        <div class="project-box" onclick="toggleProject('project1')">
-            <h2 class="project-title">Project 1</h2>
-            <div id="project1" class="project-details">
-                <iframe src="{{ site.baseurl }}/assets/ipynbs/project1.html" width="100%" height="600px"></iframe>
+        <h1>Dominique Bradshaw's Portfolio</h1>
+        <div class="project">
+            <h2 class="project-title">The Internship Hub</h2>
+            <p class="project-description">A comprehensive platform to manage internship applications and progress.</p>
+            <div class="project-content">
+                <a href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank">View on GitHub</a>
             </div>
         </div>
-
-        <div class="project-box" onclick="toggleProject('project2')">
-            <h2 class="project-title">Project 2</h2>
-            <div id="project2" class="project-details">
-                <iframe src="{{ site.baseurl }}/assets/ipynbs/project2.html" width="100%" height="600px"></iframe>
+        <div class="project">
+            <h2 class="project-title">Spotify Features</h2>
+            <p class="project-description">Analyzed Spotify data to create features like playlist recommendations.</p>
+            <div class="project-content">
+                <a href="/projects/assets.py" download>Download assets.py</a>
             </div>
         </div>
-
-        <div class="project-box" onclick="toggleProject('project3')">
-            <h2 class="project-title">Project 3</h2>
-            <div id="project3" class="project-details">
-                <iframe src="{{ site.baseurl }}/assets/ipynbs/project3.html" width="100%" height="600px"></iframe>
+        <div class="project">
+            <h2 class="project-title">Ride Share Insights</h2>
+            <p class="project-description">Analyzed Uber and Lyft ride data to provide pricing insights.</p>
+            <div class="project-content">
+                <a href="/projects/uber-lyft.ipynb" download>Download Jupyter Notebook</a>
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleProject(id) {
-            var project = document.getElementById(id);
-            if (project.style.display === 'none' || project.style.display === '') {
-                project.style.display = 'block';
-            } else {
-                project.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>

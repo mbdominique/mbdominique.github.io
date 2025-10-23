@@ -58,23 +58,31 @@ footer{text-align:center;padding:1rem;color:#333;}
     </nav>
   </header>
   <section class="hero-banner" aria-label="intro">
-    <div class="container">
-      <div class="hero-card">
-        <h2 class="hero-title">Dominique Bradshaw</h2>
-        <p class="hero-sub">Data Science Senior · Washington University in St. Louis</p>
-        <p class="hero-tag">I build fair, human-centered ML systems and turn complex data into accessible decisions — with a focus on accessibility, precision, and responsibility.</p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#projects">Explore projects</a>
-          <a class="btn-ghost" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume</a>
-        </div>
-      </div>
+  <div class="container">
+    <div class="hero-card">
+      <h2 class="hero-title">Dominique Bradshaw</h2>
+      <p class="hero-sub">Data Science Senior · Washington University in St. Louis</p>
+      <p class="hero-sub">Double Minor: African & African American Studies · Philosophy</p>
+      <p class="hero-tag">
+        I’m a data science student that's passionate about human-centered and considerate technology. 
+        I blend analytical rigor with empathy and cross-disciplinary insight to build models that 
+        don’t just perform, they inform, uplift, and respect the communities they impact.
+      </p>
+      <p class="hero-sub">
+        Currently seeking <strong>full-time data science or analytics-focused roles</strong> 
+        where I can apply technical precision and ethical responsibility to solve real-world problems.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#projects">Explore Projects</a>
+        <a class="btn-ghost" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   <main class="container">
     <section id="about" aria-label="About">
       <h2>About</h2>
-      <p class="lead">I’m a data scientist who cares about people-first outcomes. I combine careful problem framing with rigorous analytics to deliver decisions that are fair, interpretable, and useful.</p>
+      <p class="lead">I’m a data science and humanities student who cares about people-first outcomes. I combine careful problem framing with rigorous analytics to deliver decisions that are fair, interpretable, and useful.</p>
       <div class="grid">
         <article class="card">
           <h3>Mini elevator pitch</h3>
@@ -113,7 +121,7 @@ footer{text-align:center;padding:1rem;color:#333;}
           </ul>
           <p><strong>Issues faced</strong></p>
           <ul>
-            <li>Attribution across <strong>PCVR vs. native</strong> surfaces; session stitching and device/app identifiers.</li>
+            <li>Attribution across <strong>PCVR vs. Explicity gaming related applications</strong> surfaces; session stitching and device/app identifiers.</li>
             <li><strong>Sparse / long‑tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
             <li><strong>Metric definition drift</strong> (time‑spent, MAU/WAU); standardized to canonical product metrics.</li>
           </ul>
@@ -169,24 +177,51 @@ footer{text-align:center;padding:1rem;color:#333;}
           </div>
         </article>
 
-        <!-- DATA FOR GOOD HACKATHON (PUBLIC CODE) -->
+        <!-- DATA FOR GOOD HACKATHON -->
         <article class="card" aria-labelledby="proj-dfg">
           <h3 id="proj-dfg">JP Morgan · Data for Good Hackathon</h3>
           <div class="meta">
             <span class="pill">Nonprofit</span>
-            <span class="pill">Dashboards</span>
-            <span class="pill">Lightweight ML</span>
+            <span class="pill">Random Forest Modeling</span>
+            <span class="pill">Exploratory Data Analysis</span>
+            <span class="pill"> Data Cleaning and Preperation</span>
+            <span class="pill"> Data Wrangling</span>
           </div>
           <p>Analyzed elementary reading‑skills data; built a small pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
           <p><strong>What I learned</strong></p>
           <ul>
             <li>Scoping <strong>impact‑first metrics</strong> for non‑technical stakeholders.</li>
-            <li>Balancing <strong>speed vs. rigor</strong> in time‑boxed settings.</li>
+            <li>Balancing <strong>speed vs. rigor</strong> in timely settings.</li>
             <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
           </ul>
           <div class="actions">
             <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
             <a class="link" href="#" target="_blank" rel="noopener">Add: Slides</a>
+          </div>
+        </article>
+        <!-- CUSTOMER SANTANDER PROJECT -->
+        <article class="card" aria-labelledby="proj-santander">
+          <h3 id="proj-santander">Customer Santander Bank Project</h3>
+          <div class="meta">
+            <span class="pill">Classification</span>
+            <span class="pill">EDA</span>
+            <span class="pill">Feature Selection</span>
+          </div>
+          <p>
+            Built and evaluated predictive models using Santander Bank’s anonymized customer dataset 
+            to identify potential clients for financial products. Focused on model interpretability and 
+            ethical data usage while balancing precision and recall.
+          </p>
+          <p><strong>Key learnings</strong></p>
+          <ul>
+            <li>Performed extensive <strong>exploratory data analysis</strong> to uncover latent customer segments.</li>
+            <li>Applied <strong>feature selection</strong> and dimensionality reduction to manage high-dimensional input.</li>
+            <li>Compared multiple models (Logistic Regression, Random Forest, XGBoost) for performance and fairness trade-offs.</li>
+            <li>Created visual dashboards to communicate insights to non-technical stakeholders.</li>
+          </ul>
+          <div class="actions">
+            <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
+            <a class="link" href="#" target="_blank" rel="noopener">Add: Report/Notebook</a>
           </div>
         </article>
 

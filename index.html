@@ -1,61 +1,336 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ Dominique Bradshaw's Portfolio }}</title>
-    <meta name="description" content="{{ site.description }}">
-    <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dominique Bradshaw · Data Science Portfolio</title>
+  <meta name="description" content="Dominique Bradshaw — Data Science senior at Washington University in St. Louis. Fair, human‑centered ML; analytics; accessible products." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;           /* deep navy */
+      --bg-2:#11162a;         /* panel */
+      --card:#121a33;         /* card */
+      --text:#e7ebff;         /* main text */
+      --muted:#a7b1d6;        /* muted */
+      --accent:#7aa2ff;       /* primary */
+      --accent-2:#9d7aff;     /* secondary */
+      --ok:#88ffa0;           /* success */
+      --warn:#ffd27a;         /* warn */
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; line-height:1.65;
+      background:
+        radial-gradient(1200px 800px at -10% -10%, #1b2a5a 0%, transparent 60%),
+        radial-gradient(1200px 800px at 110% 10%, #341b5a 0%, transparent 60%),
+        var(--bg);
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding: clamp(16px, 4vw, 32px)}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--text)}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+    .brand span{font-weight:700;letter-spacing:.2px}
+    .links a{color:var(--muted);text-decoration:none;margin-left:18px}
+    .links a:hover{color:var(--text)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:28px}
+    .hero-card{
+      background:linear-gradient(135deg, rgba(122,162,255,.12), rgba(157,122,255,.08));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    }
+    h1{font-size: clamp(28px, 4vw, 44px); line-height:1.12; margin:0 0 10px}
+    .subtitle{color:var(--muted);max-width:60ch;margin:0}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .badge{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.9rem;color:#dbe2ff}
+    .cta{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;color:white;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text)}
+    .aside{
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; background:var(--card);
+    }
+    .aside h3{margin-top:0}
+    .kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:center}
+    .kv code{font-family:"Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:rgba(255,255,255,.05); padding:2px 6px; border-radius:8px}
+
+    /* Section */
+    section{margin-top:40px}
+    section h2{font-size: clamp(22px, 3.2vw, 32px); margin:0 0 12px}
+    p.lead{color:var(--muted)}
+
+    /* Project cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); display:flex; flex-direction:column}
+    .card h3{margin:0 0 6px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 8px}
+    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:rgba(122,162,255,.15);color:#dfE7ff;border:1px solid rgba(122,162,255,.25)}
+    .card p{margin:0 0 12px;color:var(--muted)}
+    .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .link{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);text-decoration:none;color:var(--text)}
+    .link:hover{border-color:rgba(255,255,255,.28)}
+
+    /* Footer */
+    footer{margin-top:48px;padding:22px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dominique Bradshaw's Portfolio</h1>
-        <div class="project">
-            <h2 class="project-title">The Internship Hub</h2>
-            <p class="project-description">Key Skills and Responsibilities:
-
-                Project Management: Developed a comprehensive platform for managing internship applications.
-                Feature Implementation: Added accessibility features such as screen reader compatibility and keyboard navigation.
-                Collaboration: Worked with a team to ensure the platform met diverse user needs.
-                Technologies Used: Web development technologies, GitHub for version control.
-                GitHub Link: The Internship Hub on GitHub
-                Description: Created a platform that consolidates internship applications and tracks progress. Included features for individuals with disabilities to ensure accessibility and inclusivity.</p>
-            <div class="project-content">
-                <a href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-        <div class="project">
-            <h2 class="project-title">Spotify Features</h2>
-            <p class="project-description">Key Skills and Responsibilities:
-
-                Data Analysis: Conducted comprehensive analysis of Spotify's music data to identify patterns influencing song success and user preferences.
-                Feature Engineering: Developed and refined multiple features, including song attributes, artist information, and user behavior metrics, to enhance model performance.
-                Hit Prediction Model: Created a predictive model to estimate the likelihood of a song becoming a hit, utilizing machine learning algorithms to achieve high accuracy.
-                Playlist Creation: Implemented a playlist recommendation system based on user input, suggesting curated playlists that align with user preferences and listening history.
-                Pipeline Management: Employed Dagster for orchestrating data workflows, ensuring efficient data processing and model deployment.
-                Python Programming: Utilized Python libraries such as scikit-learn and pandas for data manipulation and model development, and integrated Dagster for managing data pipelines.
-                Code Link: Download assets.py
-                Description: In this project, I developed a multi-faceted Spotify features application that included both a hit prediction model and a playlist creation system. The hit prediction model analyzed various song features—such as tempo, genre, and artist attributes—to forecast the potential success of tracks on Spotify. Additionally, the project featured a dynamic playlist recommendation system that generates playlists based on user input, tailoring suggestions to individual listening preferences. The project also incorporated Dagster, a data orchestration tool, to manage and streamline the data processing pipeline. This ensured that the data was processed efficiently and that the models were updated seamlessly. By leveraging machine learning, advanced data processing, and pipeline management, this project demonstrated my ability to create complex, user-centric features and manage sophisticated data workflows effectively.</p>
-            <div class="project-content">
-                <a href="/projects/assets.py" download>Download assets.py</a>
-            </div>
-        </div>
-        <div class="project">
-            <h2 class="project-title">Ride Share Insights</h2>
-            <p class="project-description">Key Skills and Responsibilities:
-
-                Data Exploration: Analyzed extensive Uber and Lyft ride data to explore trends, pricing structures, and ride patterns across different locations and times.
-                Model Comparison: Tested various regression models to predict ride prices, ultimately finding that the Decision Tree model outperformed others, including linear regression, in terms of R² value.
-                Decision Tree Implementation: Developed and fine-tuned a Decision Tree model to improve prediction accuracy for ride prices, providing more actionable insights compared to simpler models.
-                Data Visualization: Created visualizations to effectively communicate findings and model performance, making complex data more accessible.
-                Jupyter Notebooks: Documented the analysis process and model results in a Jupyter Notebook, allowing for clear presentation and reproducibility of the work.
-                Technologies Used: Python, scikit-learn, Jupyter Notebooks, data visualization libraries (e.g., Matplotlib, Seaborn).
-                Notebook Link: Download Jupyter Notebook </p>
-            <div class="project-content">
-                <a href="/projects/uber-lyft.ipynb" download>Download Jupyter Notebook</a>
-            </div>
-        </div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Dominique Bradshaw</span>
+      </a>
+      <nav class="links" aria-label="primary">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero" aria-label="intro">
+      <div class="hero-card">
+        <h1>Data Science Senior · Washington University in St. Louis</h1>
+        <p class="subtitle">I build fair, human‑centered ML systems and turn complex data into clear, actionable insights. I care about accessibility, ethics, and impact.</p>
+        <div class="badges" role="list">
+          <span class="badge">Python · scikit‑learn · XGBoost</span>
+          <span class="badge">Fairlearn · SHAP</span>
+          <span class="badge">SQL · pandas · NumPy</span>
+          <span class="badge">Flask · GitHub · Jupyter</span>
+        </div>
+        <div class="cta">
+          <a class="btn" href="#projects">See projects</a>
+          <a class="btn secondary" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume (add PDF)</a>
+        </div>
+      </div>
+      <aside class="aside" aria-label="Quick facts">
+        <h3>Quick facts</h3>
+        <div class="kv">
+          <div>Focus</div><div><code>Ethical AI · Accessibility</code></div>
+          <div>Interest</div><div><code>ML for social good</code></div>
+          <div>Location</div><div><code>St. Louis, MO</code></div>
+          <div>Open to</div><div><code>Internships · Collabs</code></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-label="Projects">
+      <h2>Projects & Case Studies</h2>
+      <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real‑world data; public repos are linked where available.</p>
+
+      <div class="grid">
+        <!-- META / QUEST ANALYTICS (NO CODE) -->
+        <article class="card" aria-labelledby="proj-meta">
+          <h3 id="proj-meta">Meta · Data Science Intern (Quest Devices)</h3>
+          <div class="meta">
+            <span class="pill">Product Analytics</span>
+            <span class="pill">VR/Quest</span>
+            <span class="pill">Experimentation</span>
+          </div>
+          <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale‑specific titles like JP‑language apps, Virtual Desktop, Steam Link).</p>
+          <p><strong>Hypotheses I tested</strong></p>
+          <ul>
+            <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time‑spent per MAU</strong> than comparable native titles because of content breadth.</li>
+            <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price‑to‑value dynamics.</li>
+            <li><em>H3:</em> <strong>Locale‑specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session‑time distributions</strong> and store funnel behavior vs. global averages.</li>
+          </ul>
+          <p><strong>Issues faced</strong></p>
+          <ul>
+            <li>Attribution across <strong>PCVR vs. native</strong> surfaces; session stitching and device/app identifiers.</li>
+            <li><strong>Sparse / long‑tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
+            <li><strong>Metric definition drift</strong> (time‑spent, MAU/WAU); standardized to canonical product metrics.</li>
+          </ul>
+          <p><strong>How I grew</strong></p>
+          <ul>
+            <li>Designed <strong>decision‑ready dashboards</strong> and wrote <strong>clear experiment readouts</strong> for PMs and leadership.</li>
+            <li>Tightened <strong>SQL + Python</strong> chops for large‑scale event data; added <strong>guardrails for cohorting</strong> and retention cuts.</li>
+            <li>Improved <strong>stakeholder alignment</strong> (problem framing → metrics → caveats → next steps) under privacy constraints.</li>
+          </ul>
+          <div class="actions">
+            <span class="link" aria-disabled="true">Code private (real‑world data)</span>
+          </div>
+        </article>
+
+        <!-- RESPONSIBLE DS · DIABETES FAIRNESS (PUBLIC CODE) -->
+        <article class="card" aria-labelledby="proj-diabetes">
+          <h3 id="proj-diabetes">Responsible Data Science · Diabetes Fairness</h3>
+          <div class="meta">
+            <span class="pill">Fairlearn</span>
+            <span class="pill">MetricFrame</span>
+            <span class="pill">Model Audits</span>
+          </div>
+          <p>Audited classification performance on a diabetes dataset across groups; explored <em>equalized odds</em>, <em>FPR/FNR parity</em>, and <em>demographic parity</em>. Implemented in‑processing (AdversarialFairnessClassifier) and post‑processing threshold optimization.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>How <strong>fairness metrics trade off</strong> with accuracy and how to present that tradeoff to stakeholders.</li>
+            <li>Set up <strong>reproducible pipelines</strong> with train/val/test splits, seed sweeps, and metric confidence bands.</li>
+            <li>Used <strong>SHAP</strong> to communicate model behavior and identify disparate impact sources.</li>
+          </ul>
+          <div class="actions">
+            <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
+            <a class="link" href="#" target="_blank" rel="noopener">Add: Report/Notebook</a>
+          </div>
+        </article>
+
+        <!-- CEMENT STRENGTH PREDICTION (COURSEWORK) -->
+        <article class="card" aria-labelledby="proj-cement">
+          <h3 id="proj-cement">Cement Strength Prediction</h3>
+          <div class="meta">
+            <span class="pill">Regression</span>
+            <span class="pill">Feature Engineering</span>
+            <span class="pill">Diagnostics</span>
+          </div>
+          <p>Modeled compressive strength from mix components (cement, slag, fly ash, water, superplasticizer, aggregates, age). Explored scaling, interactions, and residual diagnostics.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>Impact of <strong>feature scaling</strong> on linear models and interpretation of coefficients.</li>
+            <li>Handling <strong>multicollinearity</strong> and checking <strong>heteroscedasticity</strong>.</li>
+            <li>Validated with <strong>holdout splits</strong> and compared <strong>regularization</strong> (ridge/lasso).</li>
+          </ul>
+          <div class="actions">
+            <span class="link" aria-disabled="true">Add: Repo/Notebook (optional)</span>
+          </div>
+        </article>
+
+        <!-- DATA FOR GOOD HACKATHON (PUBLIC CODE) -->
+        <article class="card" aria-labelledby="proj-dfg">
+          <h3 id="proj-dfg">JP Morgan · Data for Good Hackathon</h3>
+          <div class="meta">
+            <span class="pill">Nonprofit</span>
+            <span class="pill">Dashboards</span>
+            <span class="pill">Lightweight ML</span>
+          </div>
+          <p>Analyzed elementary reading‑skills data; built a small pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>Scoping <strong>impact‑first metrics</strong> for non‑technical stakeholders.</li>
+            <li>Balancing <strong>speed vs. rigor</strong> in time‑boxed settings.</li>
+            <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
+          </ul>
+          <div class="actions">
+            <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
+            <a class="link" href="#" target="_blank" rel="noopener">Add: Slides</a>
+          </div>
+        </article>
+
+        <!-- EXISTING SHOWCASE (keep + clarify code status) -->
+        <article class="card" aria-labelledby="proj-hub">
+          <h3 id="proj-hub">The Internship Hub (Accessibility‑First)</h3>
+          <div class="meta">
+            <span class="pill">Flask</span>
+            <span class="pill">SQLite</span>
+            <span class="pill">A11y</span>
+          </div>
+          <p>Screen‑reader compatibility, focus management, and keyboard navigation for a student internship portal; prioritized inclusive UX.</p>
+          <div class="actions">
+            <a class="link" href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="proj-spotify">
+          <h3 id="proj-spotify">Spotify Features & Recommender</h3>
+          <div class="meta">
+            <span class="pill">Python</span>
+            <span class="pill">scikit‑learn</span>
+            <span class="pill">Dagster</span>
+          </div>
+          <p>Feature engineering + hit prediction and playlist generation; orchestrated with Dagster for reliable data refresh.</p>
+          <div class="actions">
+            <a class="link" href="/projects/assets.py" download>Download <code>assets.py</code></a>
+            <a class="link" href="#" target="_blank" rel="noopener">Add: Repo</a>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="proj-ride">
+          <h3 id="proj-ride">Ride Share Insights</h3>
+          <div class="meta">
+            <span class="pill">Regression</span>
+            <span class="pill">Decision Tree (best R²)</span>
+            <span class="pill">Visualization</span>
+          </div>
+          <p>Explored Uber/Lyft pricing and patterns; compared models and found trees outperformed linear baselines for price prediction.</p>
+          <div class="actions">
+            <a class="link" href="/projects/uber-lyft.ipynb" download>Download notebook</a>
+          </div>
+        </article>
+
+        <!-- CATCH‑ALL LIST (so "every" project has a home) -->
+        <article class="card" aria-labelledby="proj-more">
+          <h3 id="proj-more">More Projects & Software</h3>
+          <p>A running list of smaller DS/SE builds (coursework, utilities, talks). I can split these into full case studies upon request.</p>
+          <ul>
+            <li>Adversarial debiasing α‑sweep write‑up (code overlap with RDS project).</li>
+            <li>Recipe‑by‑ingredients Flask app (Spoonacular API, SQLite cache).</li>
+            <li>Internship management platform (ChatGPT mock interviews integration).</li>
+          </ul>
+          <div class="actions">
+            <a class="link" href="#" aria-disabled="true">Add: links as they go public</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="About">
+      <h2>About</h2>
+      <p class="lead">I care about people‑centered data, fairness, and accessibility. I like building things end‑to‑end: cleaning → modeling → visualization → shipping.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Core skills</h3>
+          <p><strong>ML:</strong> scikit‑learn, XGBoost, model selection, SHAP<br/>
+             <strong>Fairness:</strong> Metric audits, parity metrics, Fairlearn<br/>
+             <strong>Data:</strong> pandas, NumPy, SQL, visualization
+          </p>
+        </div>
+        <div class="card">
+          <h3>Tooling</h3>
+          <p><strong>Dev:</strong> Git/GitHub, Jupyter, VS Code<br/>
+             <strong>Web:</strong> Flask, HTML/CSS, basic JS<br/>
+             <strong>Workflow:</strong> Pipelines, notebooks, reports
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <p class="lead">Open to internships, collaborations, and speaking.</p>
+      <div class="grid">
+        <div class="card">
+          <p><strong>Email:</strong> <a class="link" href="mailto:dominique@example.com">dominique@example.com</a></p>
+          <p><strong>GitHub:</strong> <a class="link" href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></p>
+          <p><strong>LinkedIn:</strong> <a class="link" href="https://www.linkedin.com/in/your-profile/" target="_blank" rel="noopener">linkedin.com/in/your-profile</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Dominique Bradshaw · Built with GitHub Pages</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

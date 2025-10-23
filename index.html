@@ -4,135 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dominique Bradshaw · Data Science Portfolio</title>
-  <meta name="description" content="Dominique Bradshaw — Data Science senior at Washington University in St. Louis. Fair, human‑centered ML; analytics; accessible products." />
+  <meta name="description" content="Dominique Bradshaw — Data Science senior at Washington University in St. Louis." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1020;           /* deep navy */
-      --bg-2:#11162a;         /* panel */
-      --card:#121a33;         /* card */
-      --text:#e7ebff;         /* main text */
-      --muted:#a7b1d6;        /* muted */
-      --accent:#7aa2ff;       /* primary */
-      --accent-2:#9d7aff;     /* secondary */
-      --ok:#88ffa0;           /* success */
-      --warn:#ffd27a;         /* warn */
-      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --bg: linear-gradient(120deg, #ffcc70 0%, #c850c0 50%, #4158d0 100%);
+      --text:#1a1a1a;
+      --accent:#d86bff;
+      --accent-2:#ff9a8b;
+      --card:#ffffffcc;
+      --shadow:0 10px 30px rgba(0,0,0,.15);
       --radius:18px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;cursor:url('https://cur.cursors-4u.net/cursors/cur-10/cur956.cur'),auto;}
     body{
-      margin:0; color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; line-height:1.65;
-      background:
-        radial-gradient(1200px 800px at -10% -10%, #1b2a5a 0%, transparent 60%),
-        radial-gradient(1200px 800px at 110% 10%, #341b5a 0%, transparent 60%),
-        var(--bg);
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      line-height:1.6;
+      transition: background 0.5s ease-in-out;
     }
-    .wrap{max-width:1100px;margin:0 auto;padding: clamp(16px, 4vw, 32px)}
-
-    /* Header */
+    .container{max-width:1100px;margin:0 auto;padding:2rem;}
     header{
-      position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
-      border-bottom:1px solid rgba(255,255,255,.06);
+      text-align:center;padding:1rem 0;
     }
-    .nav{display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--text)}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-    .brand span{font-weight:700;letter-spacing:.2px}
-    .links a{color:var(--muted);text-decoration:none;margin-left:18px}
-    .links a:hover{color:var(--text)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:28px}
-    .hero-card{
-      background:linear-gradient(135deg, rgba(122,162,255,.12), rgba(157,122,255,.08));
-      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
-    }
-    h1{font-size: clamp(28px, 4vw, 44px); line-height:1.12; margin:0 0 10px}
-    .subtitle{color:var(--muted);max-width:60ch;margin:0}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .badge{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.9rem;color:#dbe2ff}
-    .cta{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;color:white;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text)}
-    .aside{
-      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; background:var(--card);
-    }
-    .aside h3{margin-top:0}
-    .kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:center}
-    .kv code{font-family:"Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:rgba(255,255,255,.05); padding:2px 6px; border-radius:8px}
-
-    /* Section */
-    section{margin-top:40px}
-    section h2{font-size: clamp(22px, 3.2vw, 32px); margin:0 0 12px}
-    p.lead{color:var(--muted)}
-
-    /* Project cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); display:flex; flex-direction:column}
-    .card h3{margin:0 0 6px}
-    .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 8px}
-    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:rgba(122,162,255,.15);color:#dfE7ff;border:1px solid rgba(122,162,255,.25)}
-    .card p{margin:0 0 12px;color:var(--muted)}
-    .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
-    .link{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);text-decoration:none;color:var(--text)}
-    .link:hover{border-color:rgba(255,255,255,.28)}
-
-    /* Footer */
-    footer{margin-top:48px;padding:22px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);text-align:center}
-
-    /* Responsive */
-    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+    h1{font-size:2.5rem;margin-bottom:.5rem;}
+    nav a{margin:0 10px;text-decoration:none;color:var(--text);font-weight:600;}
+    nav a:hover{color:var(--accent);}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(10px);}
+    .card h3{margin-top:0;color:#000;}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff;}
+    .actions a{display:inline-block;margin-right:10px;color:#333;text-decoration:none;font-weight:600;}
+    .actions a:hover{color:var(--accent);}
+    footer{text-align:center;padding:1rem;color:#333;}
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Dominique Bradshaw</span>
-      </a>
-      <nav class="links" aria-label="primary">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+    <h1>Dominique Bradshaw</h1>
+    <p>Data Science Senior · Washington University in St. Louis</p>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
-
-  <main id="top" class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-label="intro">
-      <div class="hero-card">
-        <h1>Data Science Senior · Washington University in St. Louis</h1>
-        <p class="subtitle">I build fair, human‑centered ML systems and turn complex data into clear, actionable insights. I care about accessibility, ethics, and impact.</p>
-        <div class="badges" role="list">
-          <span class="badge">Python · scikit‑learn · XGBoost</span>
-          <span class="badge">Fairlearn · SHAP</span>
-          <span class="badge">SQL · pandas · NumPy</span>
-          <span class="badge">Flask · GitHub · Jupyter</span>
-        </div>
-        <div class="cta">
-          <a class="btn" href="#projects">See projects</a>
-          <a class="btn secondary" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume (add PDF)</a>
-        </div>
-      </div>
-      <aside class="aside" aria-label="Quick facts">
-        <h3>Quick facts</h3>
-        <div class="kv">
-          <div>Focus</div><div><code>Ethical AI · Accessibility</code></div>
-          <div>Interest</div><div><code>ML for social good</code></div>
-          <div>Location</div><div><code>St. Louis, MO</code></div>
-          <div>Open to</div><div><code>Internships · Collabs</code></div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- PROJECTS -->
+  <main class="container">
     <section id="projects" aria-label="Projects">
       <h2>Projects & Case Studies</h2>
       <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real‑world data; public repos are linked where available.</p>
@@ -288,49 +211,11 @@
         </article>
       </div>
     </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-label="About">
-      <h2>About</h2>
-      <p class="lead">I care about people‑centered data, fairness, and accessibility. I like building things end‑to‑end: cleaning → modeling → visualization → shipping.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Core skills</h3>
-          <p><strong>ML:</strong> scikit‑learn, XGBoost, model selection, SHAP<br/>
-             <strong>Fairness:</strong> Metric audits, parity metrics, Fairlearn<br/>
-             <strong>Data:</strong> pandas, NumPy, SQL, visualization
-          </p>
-        </div>
-        <div class="card">
-          <h3>Tooling</h3>
-          <p><strong>Dev:</strong> Git/GitHub, Jupyter, VS Code<br/>
-             <strong>Web:</strong> Flask, HTML/CSS, basic JS<br/>
-             <strong>Workflow:</strong> Pipelines, notebooks, reports
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-label="Contact">
-      <h2>Contact</h2>
-      <p class="lead">Open to internships, collaborations, and speaking.</p>
-      <div class="grid">
-        <div class="card">
-          <p><strong>Email:</strong> <a class="link" href="mailto:dominique@example.com">dominique@example.com</a></p>
-          <p><strong>GitHub:</strong> <a class="link" href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></p>
-          <p><strong>LinkedIn:</strong> <a class="link" href="https://www.linkedin.com/in/your-profile/" target="_blank" rel="noopener">linkedin.com/in/your-profile</a></p>
-        </div>
-      </div>
-    </section>
   </main>
-
-  <footer>
-    <div class="wrap">© <span id="year"></span> Dominique Bradshaw · Built with GitHub Pages</div>
-  </footer>
-
+  <footer>© <span id="year"></span> Dominique Bradshaw</footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+

@@ -50,6 +50,8 @@
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
     .btn-primary{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,#ff9a8b,#ffd07a);color:#1a1a1a;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
     .btn-ghost{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.2);text-decoration:none;color:#1a1a1a}
+    .hero-title:hover{ text-shadow:0 0 10px rgba(255,200,150,.8), 0 0 20px rgba(255,150,255,.6); transition:text-shadow .3s ease }
+    .lead{color:#333}
   </style>
 </head>
 <body>
@@ -65,16 +67,37 @@
   <section class="hero-banner" aria-label="intro">
     <div class="container">
       <div class="hero-card">
-        <h2 class="hero-title">Fair, human‑centered ML & analytics</h2>
-        <p class="hero-sub">I turn complex data into accessible decisions — with an emphasis on accessibility and responsible AI.</p>
+        <h2 class="hero-title">Dominique Bradshaw</h2>
+        <p class="hero-sub">Data Science Senior · Washington University in St. Louis</p>
+        <p class="hero-tag">I build fair, human-centered ML systems and turn complex data into accessible decisions — with a focus on accessibility, precision, and responsibility.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="#projects">Explore projects</a>
           <a class="btn-ghost" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume</a>
         </div>
       </div>
+      </div>
     </div>
   </section>
   <main class="container">
+    <section id="about" aria-label="About">
+      <h2>About</h2>
+      <p class="lead">I’m a data scientist who cares about people-first outcomes. I combine careful problem framing with rigorous analytics to deliver decisions that are fair, interpretable, and useful.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Mini elevator pitch</h3>
+          <ul>
+            <li><strong>Precision with purpose:</strong> I obsess over definitions, metrics, and edge cases so the results actually move decisions.</li>
+            <li><strong>Responsible by default:</strong> I audit models for fairness (parity metrics, error analysis) and document tradeoffs clearly.</li>
+            <li><strong>End‑to‑end builder:</strong> from cleaning and features to modeling, visualization, and stakeholder‑ready reports.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Tech snapshot</h3>
+          <p><strong>Python, SQL, scikit‑learn, XGBoost, SHAP, Fairlearn, pandas/NumPy, Flask, Git/GitHub, Jupyter</strong></p>
+        </article>
+      </div>
+    </section>
+
     <section id="projects" aria-label="Projects">
       <h2>Projects & Case Studies</h2>
       <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real‑world data; public repos are linked where available.</p>
@@ -237,3 +260,4 @@
   </script>
 </body>
 </html>
+

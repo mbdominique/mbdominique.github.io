@@ -9,6 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* vertical spacing between horizontal project cards */
+#projects > article.card.horizontal {
+  margin-bottom: 22px;   /* space between boxes */
+}
+
+/* remove extra space after the last one */
+#projects > article.card.horizontal:last-of-type {
+  margin-bottom: 0;
+}
+
     :root{
       /* Soft sunset */
       --bg: linear-gradient(120deg, #FFD580 0%, #FF9A8B 50%, #FF6A88 100%);

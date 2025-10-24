@@ -26,30 +26,6 @@
       box-sizing: border-box;
       cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur183.cur"), auto !important;
     }
-    /* make each project card horizontal */
-.card.horizontal {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 1.2rem;
-}
-
-.card.horizontal .text {
-  flex: 1 1 50%;
-}
-
-.card.horizontal .nb-wrap {
-  flex: 1 1 50%;
-}
-
-.card.horizontal iframe {
-  width: 100%;
-  height: 320px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,.15);
-}
-
 
     body{
       margin:0;
@@ -102,58 +78,29 @@
     .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
     .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff}
 
-    /* Horizontal scroller for Projects */
-    .scroller-wrap{
-      position:relative; margin-top:10px;
-      /* soft edge fade (supported in modern browsers) */
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-              mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    /* Each project card laid out horizontally */
+    .card.horizontal {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 1.2rem;
     }
-    .h-scroll{
-      display:flex;
-      gap:var(--gap);
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      padding: 4px 4px 12px;
-      -webkit-overflow-scrolling:touch;
-    }
-    .h-scroll::-webkit-scrollbar{ height:10px; }
-    .h-scroll::-webkit-scrollbar-thumb{ background: rgba(0,0,0,.25); border-radius:10px; }
+    .card.horizontal .text { flex: 1 1 50%; min-width: 0; }
+    .card.horizontal .nb-wrap { flex: 1 1 50%; min-width: 0; }
 
-    /* Card sizing for horizontal layout */
-    .card--h{
-      scroll-snap-align:start;
-      flex: 0 0 clamp(300px, 38vw, 380px);
-    }
-    .card--wide{ /* great for notebook embeds */
-      flex: 0 0 clamp(320px, 60vw, 640px);
-    }
-
-    /* Notebook iframe sizing (responsive inside cards) */
-    .nb-wrap { margin-top: 10px; }
-    .nb-frame { position: relative; width: 100%; }
-    /* Height tuned for wide vs normal cards */
-    .card--wide .nb-frame { height: 380px; }
-    .card--h   .nb-frame { height: 260px; }
+    /* Notebook iframe block */
+    .nb-wrap { margin-top: 6px; }
+    .nb-frame { position: relative; width: 100%; height: 340px; }
     .nb-frame iframe{
       position:absolute; inset:0; width:100%; height:100%;
       border:1px solid rgba(0,0,0,.15); border-radius:12px; background:#fff;
     }
 
-    /* Optional scroll arrows (hidden on narrow screens) */
-    .scroll-btn{
-      position:absolute; top:50%; transform:translateY(-50%);
-      background: rgba(255,255,255,.9);
-      border:1px solid rgba(0,0,0,.12);
-      border-radius:999px;
-      width:42px; height:42px;
-      display:grid; place-items:center;
-      cursor:pointer; box-shadow:var(--shadow); font-size:24px; line-height:0;
-    }
-    .scroll-btn.left{ left:-6px; }
-    .scroll-btn.right{ right:-6px; }
-    @media (max-width: 780px){
-      .scroll-btn{ display:none; }
+    /* Responsive: stack on mobile */
+    @media (max-width: 820px){
+      .card.horizontal { flex-direction: column; }
+      .nb-frame { height: 280px; }
     }
 
     footer{text-align:center;padding:1.5rem;color:#333}
@@ -211,235 +158,222 @@
       </div>
     </section>
 
-    <!-- PROJECTS (Horizontal) -->
+    <!-- PROJECTS (Each card is horizontal) -->
     <section id="projects" aria-label="Projects" style="margin-top:28px">
       <h2>Projects & Case Studies</h2>
       <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real-world data; public repos are linked where available.</p>
 
-      <div class="scroller-wrap">
-        <button class="scroll-btn left"  aria-label="Scroll left">‹</button>
-        <div class="h-scroll" id="projScroller">
-
-          <!-- META / QUEST ANALYTICS (NO CODE) -->
-          <article class="card card--h" aria-labelledby="proj-meta">
-            <h3 id="proj-meta">Meta · Data Science Intern (Quest Devices)</h3>
-            <div class="meta">
-              <span class="pill">Product Analytics</span>
-              <span class="pill">VR/Quest</span>
-              <span class="pill">Experimentation</span>
-              <span class="pill">SQL</span>
-            </div>
-            <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale-specific titles like JP-language apps, Virtual Desktop, Steam Link).</p>
-            <p><strong>Hypotheses I tested</strong></p>
-            <ul>
-              <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time-spent per MAU</strong> than comparable native titles because of content breadth.</li>
-              <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price-to-value dynamics.</li>
-              <li><em>H3:</em> <strong>Locale-specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session-time distributions</strong> and store-funnel behavior vs. global averages.</li>
-            </ul>
-            <p><strong>Issues faced</strong></p>
-            <ul>
-              <li>Attribution across <strong>PCVR vs. native</strong> surfaces; session stitching and device/app identifiers.</li>
-              <li><strong>Sparse / long-tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
-              <li><strong>Metric definition drift</strong> (time-spent, MAU/WAU); standardized to canonical product metrics.</li>
-            </ul>
-            <p><strong>How I grew</strong></p>
-            <ul>
-              <li>Designed <strong>decision-ready dashboards</strong> and wrote <strong>clear experiment readouts</strong> for PMs and leadership.</li>
-              <li>Tightened <strong>SQL + Python</strong> chops for large-scale event data; added <strong>guardrails for cohorting</strong> and retention cuts.</li>
-              <li>Improved <strong>stakeholder alignment</strong> (problem framing → metrics → caveats → next steps) under privacy constraints.</li>
-            </ul>
-            <div class="actions">
-              <span class="link" aria-disabled="true">Code private (real-world data)</span>
-            </div>
-          </article>
-
-          <!-- RESPONSIBLE DS · DIABETES FAIRNESS (PUBLIC CODE) -->
-          <article class="card card--wide" aria-labelledby="proj-diabetes">
-            <h3 id="proj-diabetes">Responsible Data Science · Diabetes Fairness</h3>
-            <div class="meta">
-              <span class="pill">Fairlearn</span>
-              <span class="pill">MetricFrame</span>
-              <span class="pill">Model Audits</span>
-            </div>
-            <p>Audited classification performance on a diabetes dataset across groups; explored <em>equalized odds</em>, <em>FPR/FNR parity</em>, and <em>demographic parity</em>. Implemented in-processing (AdversarialFairnessClassifier) and post-processing threshold optimization.</p>
-            <p><strong>What I learned</strong></p>
-            <ul>
-              <li>How <strong>fairness metrics trade off</strong> with accuracy and how to present that tradeoff to stakeholders.</li>
-              <li>Set up <strong>reproducible pipelines</strong> with train/val/test splits, seed sweeps, and metric confidence bands.</li>
-              <li>Used <strong>SHAP</strong> to communicate model behavior and identify disparate-impact sources.</li>
-            </ul>
-
-            <section class="nb-wrap">
-              <h3>View Notebook</h3>
-              <div class="nb-frame">
-                <iframe
-                  src="https://nbviewer.org/github/mbdominique/mbdominique.github.io/blob/main/projects/Diabetes_fairness.ipynb"
-                  title="Diabetes Fairness Notebook"
-                  loading="lazy"
-                  allowfullscreen></iframe>
-              </div>
-            </section>
-          </article>
-
-          <!-- CEMENT STRENGTH PREDICTION (COURSEWORK) -->
-          <article class="card card--h" aria-labelledby="proj-cement">
-            <h3 id="proj-cement">Cement Strength Prediction</h3>
-            <div class="meta">
-              <span class="pill">Regression</span>
-              <span class="pill">Feature Engineering</span>
-              <span class="pill">Diagnostics</span>
-            </div>
-            <p>Modeled compressive strength from mix components (cement, slag, fly ash, water, superplasticizer, aggregates, age). Explored scaling, interactions, and residual diagnostics.</p>
-            <p><strong>What I learned</strong></p>
-            <ul>
-              <li>Impact of <strong>feature scaling</strong> on linear models and interpretation of coefficients.</li>
-              <li>Handling <strong>multicollinearity</strong> and checking <strong>heteroscedasticity</strong>.</li>
-              <li>Validated with <strong>holdout splits</strong> and compared <strong>regularization</strong> (ridge/lasso).</li>
-            </ul>
-          </article>
-
-          <!-- CUSTOMER SANTANDER PROJECT -->
-          <article class="card card--wide" aria-labelledby="proj-santander">
-            <h3 id="proj-santander">Customer Santander Bank Transaction Prediction</h3>
-            <div class="meta">
-              <span class="pill">Classification</span>
-              <span class="pill">EDA</span>
-              <span class="pill">Feature Selection</span>
-            </div>
-            <p>
-              Built and evaluated predictive models using Santander Bank’s anonymized transaction dataset
-              to identify potential clients for financial products. Focused on model interpretability,
-              ethical data usage, and balancing precision and recall.
-            </p>
-            <p><strong>Key learnings</strong></p>
-            <ul>
-              <li>Performed detailed <strong>exploratory data analysis</strong> to uncover latent patterns and transaction behaviors.</li>
-              <li>Applied <strong>feature selection</strong> and dimensionality reduction (PCA, RFE) to optimize signal-to-noise ratio.</li>
-              <li>Compared multiple models (Logistic Regression, Random Forest, XGBoost) for accuracy and fairness trade-offs.</li>
-              <li>Created visual dashboards to communicate results effectively to non-technical stakeholders.</li>
-            </ul>
-
-            <section class="nb-wrap">
-              <h3>View Notebook</h3>
-              <div class="nb-frame">
-                <iframe
-                  src="https://nbviewer.org/github/mbdominique/mbdominique.github.io/blob/main/projects/Santander%20Transaction%20Prediction.ipynb"
-                  title="Santander Transaction Prediction Notebook"
-                  loading="lazy"
-                  allowfullscreen></iframe>
-              </div>
-            </section>
-          </article>
-
-          <!-- DATA FOR GOOD HACKATHON -->
-          <article class="card card--h" aria-labelledby="proj-dfg">
-            <h3 id="proj-dfg">J.P. Morgan · Data for Good Hackathon</h3>
-            <div class="meta">
-              <span class="pill">Nonprofit</span>
-              <span class="pill">Random Forest</span>
-              <span class="pill">EDA</span>
-              <span class="pill">Data Cleaning</span>
-              <span class="pill">Data Wrangling</span>
-            </div>
-            <p>Analyzed elementary reading-skills data; built a lightweight pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
-            <p><strong>What I learned</strong></p>
-            <ul>
-              <li>Scoping <strong>impact-first metrics</strong> for non-technical stakeholders.</li>
-              <li>Balancing <strong>speed vs. rigor</strong> in time-boxed settings.</li>
-              <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
-            </ul>
-          </article>
-
-          <!-- The Internship Hub -->
-          <article class="card card--h" aria-labelledby="proj-hub">
-            <h3 id="proj-hub">The Internship Hub (Accessibility-First)</h3>
-            <div class="meta">
-              <span class="pill">Flask</span>
-              <span class="pill">SQLite</span>
-              <span class="pill">A11y</span>
-            </div>
-            <p>Screen-reader compatibility, focus management, and keyboard navigation for a student internship portal; prioritized inclusive UX.</p>
-            <div class="actions">
-              <a class="link" href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </article>
-
-          <!-- Spotify -->
-          <article class="card card--h" aria-labelledby="proj-spotify">
-            <h3 id="proj-spotify">Spotify Features & Recommender</h3>
-            <div class="meta">
-              <span class="pill">Python</span>
-              <span class="pill">scikit-learn</span>
-              <span class="pill">Dagster</span>
-            </div>
-            <p>Feature engineering + hit prediction and playlist generation; orchestrated with Dagster for reliable data refresh.</p>
-            <div class="actions">
-              <a class="link" href="/projects/assets.py" download>Download <code>assets.py</code></a>
-            </div>
-          </article>
-
-          <!-- Ride Share -->
-          <article class="card card--h" aria-labelledby="proj-ride">
-            <h3 id="proj-ride">Ride Share Insights</h3>
-            <div class="meta">
-              <span class="pill">Regression</span>
-              <span class="pill">Decision Tree (best R²)</span>
-              <span class="pill">Visualization</span>
-            </div>
-            <p>Explored Uber/Lyft pricing and patterns; compared models and found trees outperformed linear baselines for price prediction.</p>
-            <div class="actions">
-              <a class="link" href="/projects/uber-lyft.ipynb" download>Download notebook</a>
-            </div>
-          </article>
-
-          <!-- More Projects -->
-          <article class="card card--h" aria-labelledby="proj-more">
-            <h3 id="proj-more">More Projects & Software</h3>
-            <p>A running list of smaller DS/SE builds (coursework, utilities, talks). I can split these into full case studies upon request.</p>
-            <ul>
-              <li>Adversarial debiasing α-sweep write-up (Fairlearn experiments).</li>
-              <li>Recipe-by-ingredients Flask app (Spoonacular API, SQLite cache).</li>
-              <li>Internship management platform (mock interview helper).</li>
-            </ul>
-          </article>
-
+      <!-- META / QUEST ANALYTICS (NO CODE) -->
+      <article class="card horizontal" aria-labelledby="proj-meta">
+        <div class="text">
+          <h3 id="proj-meta">Meta · Data Science Intern (Quest Devices)</h3>
+          <div class="meta">
+            <span class="pill">Product Analytics</span>
+            <span class="pill">VR/Quest</span>
+            <span class="pill">Experimentation</span>
+            <span class="pill">SQL</span>
+          </div>
+          <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale-specific titles like JP-language apps, Virtual Desktop, Steam Link).</p>
+          <p><strong>Hypotheses I tested</strong></p>
+          <ul>
+            <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time-spent per MAU</strong> than comparable native titles because of content breadth.</li>
+            <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price-to-value dynamics.</li>
+            <li><em>H3:</em> <strong>Locale-specific apps</strong> exhibit <strong>distinct session-time distributions</strong> and store-funnel behavior vs. global averages.</li>
+          </ul>
+          <p><strong>Issues faced</strong></p>
+          <ul>
+            <li>Attribution across <strong>PCVR vs. native</strong> surfaces; session stitching and device/app identifiers.</li>
+            <li><strong>Sparse / long-tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
+            <li><strong>Metric definition drift</strong> (time-spent, MAU/WAU); standardized to canonical product metrics.</li>
+          </ul>
+          <p><strong>How I grew</strong></p>
+          <ul>
+            <li>Designed <strong>decision-ready dashboards</strong> and wrote <strong>clear experiment readouts</strong> for PMs and leadership.</li>
+            <li>Tightened <strong>SQL + Python</strong> chops for large-scale event data; added <strong>guardrails for cohorting</strong> and retention cuts.</li>
+            <li>Improved <strong>stakeholder alignment</strong> (problem framing → metrics → caveats → next steps) under privacy constraints.</li>
+          </ul>
+          <div class="actions">
+            <span class="link" aria-disabled="true">Code private (real-world data)</span>
+          </div>
         </div>
-        <button class="scroll-btn right" aria-label="Scroll right">›</button>
-      </div>
+        <!-- no notebook column here -->
+      </article>
+
+      <!-- RESPONSIBLE DS · DIABETES FAIRNESS (PUBLIC CODE) -->
+      <article class="card horizontal" aria-labelledby="proj-diabetes">
+        <div class="text">
+          <h3 id="proj-diabetes">Responsible Data Science · Diabetes Fairness</h3>
+          <div class="meta">
+            <span class="pill">Fairlearn</span>
+            <span class="pill">MetricFrame</span>
+            <span class="pill">Model Audits</span>
+          </div>
+          <p>Audited classification performance on a diabetes dataset across groups; explored <em>equalized odds</em>, <em>FPR/FNR parity</em>, and <em>demographic parity</em>. Implemented in-processing (AdversarialFairnessClassifier) and post-processing threshold optimization.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>How <strong>fairness metrics trade off</strong> with accuracy and how to present that tradeoff to stakeholders.</li>
+            <li>Set up <strong>reproducible pipelines</strong> with train/val/test splits, seed sweeps, and metric confidence bands.</li>
+            <li>Used <strong>SHAP</strong> to communicate model behavior and identify disparate-impact sources.</li>
+          </ul>
+        </div>
+        <div class="nb-wrap">
+          <div class="nb-frame">
+            <iframe
+              src="https://nbviewer.org/github/mbdominique/mbdominique.github.io/blob/main/projects/Diabetes_fairness.ipynb"
+              title="Diabetes Fairness Notebook"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </article>
+
+      <!-- CEMENT STRENGTH PREDICTION (COURSEWORK) -->
+      <article class="card horizontal" aria-labelledby="proj-cement">
+        <div class="text">
+          <h3 id="proj-cement">Cement Strength Prediction</h3>
+          <div class="meta">
+            <span class="pill">Regression</span>
+            <span class="pill">Feature Engineering</span>
+            <span class="pill">Diagnostics</span>
+          </div>
+          <p>Modeled compressive strength from mix components (cement, slag, fly ash, water, superplasticizer, aggregates, age). Explored scaling, interactions, and residual diagnostics.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>Impact of <strong>feature scaling</strong> on linear models and interpretation of coefficients.</li>
+            <li>Handling <strong>multicollinearity</strong> and checking <strong>heteroscedasticity</strong>.</li>
+            <li>Validated with <strong>holdout splits</strong> and compared <strong>regularization</strong> (ridge/lasso).</li>
+          </ul>
+        </div>
+        <!-- no notebook for this one -->
+      </article>
+
+      <!-- CUSTOMER SANTANDER PROJECT -->
+      <article class="card horizontal" aria-labelledby="proj-santander">
+        <div class="text">
+          <h3 id="proj-santander">Customer Santander Bank Transaction Prediction</h3>
+          <div class="meta">
+            <span class="pill">Classification</span>
+            <span class="pill">EDA</span>
+            <span class="pill">Feature Selection</span>
+          </div>
+          <p>
+            Built and evaluated predictive models using Santander Bank’s anonymized transaction dataset
+            to identify potential clients for financial products. Focused on model interpretability,
+            ethical data usage, and balancing precision and recall.
+          </p>
+          <p><strong>Key learnings</strong></p>
+          <ul>
+            <li>Performed detailed <strong>exploratory data analysis</strong> to uncover latent patterns and transaction behaviors.</li>
+            <li>Applied <strong>feature selection</strong> and dimensionality reduction (PCA, RFE) to optimize signal-to-noise ratio.</li>
+            <li>Compared multiple models (Logistic Regression, Random Forest, XGBoost) for accuracy and fairness trade-offs.</li>
+            <li>Created visual dashboards to communicate results effectively to non-technical stakeholders.</li>
+          </ul>
+        </div>
+        <div class="nb-wrap">
+          <div class="nb-frame">
+            <iframe
+              src="https://nbviewer.org/github/mbdominique/mbdominique.github.io/blob/main/projects/Santander%20Transaction%20Prediction.ipynb"
+              title="Santander Transaction Prediction Notebook"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </article>
+
+      <!-- DATA FOR GOOD HACKATHON -->
+      <article class="card horizontal" aria-labelledby="proj-dfg">
+        <div class="text">
+          <h3 id="proj-dfg">J.P. Morgan · Data for Good Hackathon</h3>
+          <div class="meta">
+            <span class="pill">Nonprofit</span>
+            <span class="pill">Random Forest</span>
+            <span class="pill">EDA</span>
+            <span class="pill">Data Cleaning</span>
+            <span class="pill">Data Wrangling</span>
+          </div>
+          <p>Analyzed elementary reading-skills data; built a lightweight pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>Scoping <strong>impact-first metrics</strong> for non-technical stakeholders.</li>
+            <li>Balancing <strong>speed vs. rigor</strong> in time-boxed settings.</li>
+            <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
+          </ul>
+        </div>
+        <!-- no notebook -->
+      </article>
+
+      <!-- The Internship Hub -->
+      <article class="card horizontal" aria-labelledby="proj-hub">
+        <div class="text">
+          <h3 id="proj-hub">The Internship Hub (Accessibility-First)</h3>
+          <div class="meta">
+            <span class="pill">Flask</span>
+            <span class="pill">SQLite</span>
+            <span class="pill">A11y</span>
+          </div>
+          <p>Screen-reader compatibility, focus management, and keyboard navigation for a student internship portal; prioritized inclusive UX.</p>
+          <div class="actions">
+            <a class="link" href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+        <!-- no notebook -->
+      </article>
+
+      <!-- Spotify -->
+      <article class="card horizontal" aria-labelledby="proj-spotify">
+        <div class="text">
+          <h3 id="proj-spotify">Spotify Features & Recommender</h3>
+          <div class="meta">
+            <span class="pill">Python</span>
+            <span class="pill">scikit-learn</span>
+            <span class="pill">Dagster</span>
+          </div>
+          <p>Feature engineering + hit prediction and playlist generation; orchestrated with Dagster for reliable data refresh.</p>
+          <div class="actions">
+            <a class="link" href="/projects/assets.py" download>Download <code>assets.py</code></a>
+          </div>
+        </div>
+        <!-- no notebook -->
+      </article>
+
+      <!-- Ride Share -->
+      <article class="card horizontal" aria-labelledby="proj-ride">
+        <div class="text">
+          <h3 id="proj-ride">Ride Share Insights</h3>
+          <div class="meta">
+            <span class="pill">Regression</span>
+            <span class="pill">Decision Tree (best R²)</span>
+            <span class="pill">Visualization</span>
+          </div>
+          <p>Explored Uber/Lyft pricing and patterns; compared models and found trees outperformed linear baselines for price prediction.</p>
+          <div class="actions">
+            <a class="link" href="/projects/uber-lyft.ipynb" download>Download notebook</a>
+          </div>
+        </div>
+        <!-- no notebook -->
+      </article>
+
+      <!-- More Projects -->
+      <article class="card horizontal" aria-labelledby="proj-more">
+        <div class="text">
+          <h3 id="proj-more">More Projects & Software</h3>
+          <p>A running list of smaller DS/SE builds (coursework, utilities, talks). I can split these into full case studies upon request.</p>
+          <ul>
+            <li>Adversarial debiasing α-sweep write-up (Fairlearn experiments).</li>
+            <li>Recipe-by-ingredients Flask app (Spoonacular API, SQLite cache).</li>
+            <li>Internship management platform (mock interview helper).</li>
+          </ul>
+        </div>
+        <!-- no notebook -->
+      </article>
+
     </section>
   </main>
 
   <footer>© <span id="year"></span> Dominique Bradshaw</footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Horizontal scroller arrow behavior
-    (function(){
-      const scroller = document.getElementById('projScroller');
-      const leftBtn  = document.querySelector('.scroll-btn.left');
-      const rightBtn = document.querySelector('.scroll-btn.right');
-
-      function updateButtons(){
-        if (!leftBtn || !rightBtn) return;
-        leftBtn.disabled  = scroller.scrollLeft <= 0;
-        rightBtn.disabled = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
-      }
-      function scrollByStep(dir=1){
-        // Step = approximate width of a wide card + gap (works for both sizes)
-        const step = Math.max(360, Math.min(scroller.clientWidth * 0.6, 700));
-        scroller.scrollBy({ left: dir * step, behavior: 'smooth' });
-        setTimeout(updateButtons, 350);
-      }
-
-      if (leftBtn && rightBtn) {
-        leftBtn.addEventListener('click',  () => scrollByStep(-1));
-        rightBtn.addEventListener('click', () => scrollByStep(1));
-        scroller.addEventListener('scroll', updateButtons, { passive: true });
-        updateButtons();
-      }
-    })();
   </script>
 </body>
 </html>

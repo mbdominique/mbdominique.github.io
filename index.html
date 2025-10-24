@@ -20,22 +20,23 @@
       --radius:18px;
     }
 
-    /* mini-sun cursor + default fallback */
-    *{ box-sizing:border-box; <style>
-  * 
-    cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur183.cur"), auto !important;
-  }
+  /* yellow pointer cursor + default fallback */
+* {
+  box-sizing: border-box;
+  cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur183.cur"), auto !important;
+}
 
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      line-height:1.6;
-      transition: background 0.5s ease-in-out;
-      scroll-behavior:smooth;
-    }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background 0.5s ease-in-out;
+  scroll-behavior: smooth;
+}
+
     .container{max-width:1100px;margin:0 auto;padding:2rem;}
 
     /* HERO */
@@ -304,22 +305,6 @@
             <a class="link" href="/projects/uber-lyft.ipynb" download>Download notebook</a>
           </div>
         </article>
-
-        <!-- CATCH-ALL LIST -->
-        <article class="card" aria-labelledby="proj-more">
-          <h3 id="proj-more">More Projects & Software</h3>
-          <p>A running list of smaller DS/SE builds (coursework, utilities, talks). I can split these into full case studies upon request.</p>
-          <ul>
-            <li>Adversarial debiasing α-sweep write-up (code overlap with RDS project).</li>
-            <li>Recipe-by-ingredients Flask app (Spoonacular API, SQLite cache).</li>
-            <li>Internship management platform (ChatGPT mock interviews integration).</li>
-          </ul>
-          <div class="actions">
-            <a class="link" href="#" aria-disabled="true">Add: links as they go public</a>
-          </div>
-        </article>
-
-      </div>
     </section>
   </main>
 

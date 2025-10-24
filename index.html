@@ -10,15 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: linear-gradient(120deg, #ffcc70 0%, #c850c0 50%, #4158d0 100%);
+      /* Soft sunset */
+      --bg: linear-gradient(120deg, #FFD580 0%, #FF9A8B 50%, #FF6A88 100%);
       --text:#1a1a1a;
-      --accent:#d86bff;
-      --accent-2:#ff9a8b;
+      --accent:#ffb347;
+      --accent-2:#ffcc33;
       --card:#ffffffcc;
       --shadow:0 10px 30px rgba(0,0,0,.15);
       --radius:18px;
     }
-    *{box-sizing:border-box;cursor:url('https://cur.cursors-4u.net/others/oth-8/oth798.cur'), url('https://cur.cursors-4u.net/cursors/cur-2/cur148.cur'), auto;}
+
+    /* mini-sun cursor + default fallback */
+    *{ box-sizing:border-box; cursor:url('https://cur.cursors-4u.net/others/oth-10/oth968.cur'), auto; }
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -27,41 +30,120 @@
       min-height:100vh;
       line-height:1.6;
       transition: background 0.5s ease-in-out;
+      scroll-behavior:smooth;
     }
     .container{max-width:1100px;margin:0 auto;padding:2rem;}
-    header{text-align:center;padding:1.5rem 0;}
-    h1{font-size:2.8rem;margin-bottom:.5rem;}
-    nav a{margin:0 10px;text-decoration:none;color:var(--text);font-weight:600;}
-    nav a:hover{color:var(--accent);}
+
+    /* HERO */
     .hero-banner{padding:3rem 0;text-align:center;}
-    .hero-card{background:rgba(255,255,255,.35);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);border-radius:18px;padding:24px;box-shadow:var(--shadow);display:inline-block;}
+    .hero-card{
+      background:rgba(255,255,255,.35);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:18px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      display:inline-block;
+      text-align:left;
+      max-width:900px;
+    }
     .hero-title{font-size:clamp(26px,3.2vw,40px);margin:0;color:#2b2b2b;}
-    .hero-sub{font-size:1.2rem;margin:8px 0;color:#333;}
-    .hero-title:hover{ text-shadow:0 0 15px rgba(255,204,102,.9),0 0 30px rgba(255,170,50,.8); transition:text-shadow .3s ease;}
-    .btn-primary{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,#ffd07a,#ff9a8b);color:#1a1a1a;text-decoration:none;font-weight:700;box-shadow:var(--shadow);margin:5px;}
-    .btn-ghost{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.2);text-decoration:none;color:#1a1a1a;margin:5px;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(10px);}
-    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
-    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff;}
-    footer{text-align:center;padding:1rem;color:#333;}
-    /* optional: define .lead since it's used */
-    .lead{opacity:.9;margin-bottom:1rem;}
+    .hero-title:hover{ text-shadow:0 0 15px rgba(255,204,102,.9),0 0 30px rgba(255,170,50,.8); transition:text-shadow .3s ease; }
+    .hero-sub{font-size:1.05rem;margin:8px 0;color:#333;}
+    .hero-tag{margin:10px 0 14px;color:#2a2a2a;}
+    .btn-primary{
+      display:inline-block;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(135deg,#ffd07a,#ff9a8b);
+      color:#1a1a1a;text-decoration:none;font-weight:700;
+      box-shadow:var(--shadow);margin:5px;
+    }
+    .btn-ghost{
+      display:inline-block;padding:10px 14px;border-radius:12px;
+      border:1px solid rgba(0,0,0,.2);text-decoration:none;color:#1a1a1a;margin:5px;
+    }
+
+    /* Sections */
+    h2{margin:0 0 .5rem;font-size:clamp(22px,3vw,30px)}
+    .lead{color:#2f2f2f;margin:0 0 .5rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:10px;}
+    .card{
+      background:var(--card);border-radius:var(--radius);
+      padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(10px);
+    }
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff}
+    .actions .link{display:inline-block;margin-right:10px;color:#333;text-decoration:none;font-weight:600}
+    .actions .link:hover{color:#000}
+
+    footer{text-align:center;padding:1.5rem;color:#333}
   </style>
 </head>
 <body>
+
+  <!-- HERO (no top site header to avoid repetition) -->
+  <section class="hero-banner" aria-label="intro">
+    <div class="container">
+      <div class="hero-card">
+        <h2 class="hero-title">Dominique Bradshaw</h2>
+        <p class="hero-sub"><strong>B.S. Data Science</strong> · Minors: African & African American Studies · Philosophy</p>
+        <p class="hero-sub">Washington University in St. Louis</p>
+        <p class="hero-tag">
+          I’m a data scientist passionate about human-centered, equitable technology.
+          I blend analytical rigor with empathy and cross-disciplinary insight to build models that don’t just perform —
+          they inform, uplift, and respect the communities they impact.
+        </p>
+        <p class="hero-sub">
+          Seeking <strong>full-time data science / ML-focused roles</strong> where I can apply technical precision and responsible AI practices.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#projects">Explore Projects</a>
+          <a class="btn-ghost" href="assets/Dominique_Bradshaw_Resume.pdf" aria-disabled="true">Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main class="container">
-    <section id="projects" aria-label="Projects">
+    <!-- ABOUT -->
+    <section id="about" aria-label="About">
+      <h2>About</h2>
+      <p class="lead">
+        I believe thoughtfulness, equity, and technical precision must coexist. I design pipelines and models that serve real people,
+        with clear assumptions, careful metrics, and transparent tradeoffs.
+      </p>
+      <ul>
+        <li><strong>Precision with purpose:</strong> I obsess over definitions, metrics, and edge cases so the results actually move decisions.</li>
+        <li><strong>Responsible by default:</strong> I audit models for fairness (parity metrics, error analysis) and document tradeoffs clearly.</li>
+        <li><strong>End-to-end builder:</strong> from cleaning and features to modeling, visualization, and stakeholder-ready reports.</li>
+      </ul>
+
+      <div class="grid" style="margin-top:8px">
+        <article class="card">
+          <h3>Tech snapshot</h3>
+          <p><strong>Languages:</strong> Python, SQL, R, JavaScript (basic), HTML/CSS</p>
+          <p><strong>Data Science & ML:</strong> scikit-learn, XGBoost, LightGBM, PyTorch, TensorFlow, pandas, NumPy, matplotlib, seaborn</p>
+          <p><strong>Fairness & Ethics:</strong> Fairlearn, MetricFrame, ThresholdOptimizer, SHAP, LIME, Model Cards</p>
+          <p><strong>Data Engineering & Tools:</strong> Dagster, Flask, FastAPI, SQLite, PostgreSQL, Git/GitHub, Docker (intro), REST APIs</p>
+          <p><strong>Analytics & Visualization:</strong> Tableau, Power BI (intro), Excel, Plotly, Dash</p>
+          <p><strong>Research & Deployment:</strong> Jupyter, Google Colab, VS Code, AWS (S3, SageMaker basics), model interpretability & documentation</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-label="Projects" style="margin-top:28px">
       <h2>Projects & Case Studies</h2>
       <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real-world data; public repos are linked where available.</p>
 
       <div class="grid">
-        <!-- METAVERSE HORIZON QUEST ANALYTICS (NO CODE) -->
+
+        <!-- META / QUEST ANALYTICS (NO CODE) -->
         <article class="card" aria-labelledby="proj-meta">
-          <h3 id="proj-meta">Meta · Data Science Intern (Metaverse Horizon Experiences)</h3>
+          <h3 id="proj-meta">Meta · Data Science Intern (Quest Devices)</h3>
           <div class="meta">
             <span class="pill">Product Analytics</span>
             <span class="pill">VR/Quest</span>
+            <span class="pill">Experimentation</span>
             <span class="pill">SQL</span>
           </div>
           <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale-specific titles like JP-language apps, Virtual Desktop, Steam Link).</p>
@@ -69,11 +151,11 @@
           <ul>
             <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time-spent per MAU</strong> than comparable native titles because of content breadth.</li>
             <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price-to-value dynamics.</li>
-            <li><em>H3:</em> <strong>Locale-specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session-time distributions</strong> and store funnel behavior vs. global averages.</li>
+            <li><em>H3:</em> <strong>Locale-specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session-time distributions</strong> and store-funnel behavior vs. global averages.</li>
           </ul>
           <p><strong>Issues faced</strong></p>
           <ul>
-            <li>Attribution across <strong>PCVR vs. Explicitly gaming-related applications</strong> surfaces; session stitching and device/app identifiers.</li>
+            <li>Attribution across <strong>PCVR vs. native</strong> surfaces; session stitching and device/app identifiers.</li>
             <li><strong>Sparse / long-tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
             <li><strong>Metric definition drift</strong> (time-spent, MAU/WAU); standardized to canonical product metrics.</li>
           </ul>
@@ -101,7 +183,7 @@
           <ul>
             <li>How <strong>fairness metrics trade off</strong> with accuracy and how to present that tradeoff to stakeholders.</li>
             <li>Set up <strong>reproducible pipelines</strong> with train/val/test splits, seed sweeps, and metric confidence bands.</li>
-            <li>Used <strong>SHAP</strong> to communicate model behavior and identify disparate impact sources.</li>
+            <li>Used <strong>SHAP</strong> to communicate model behavior and identify disparate-impact sources.</li>
           </ul>
           <div class="actions">
             <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
@@ -129,29 +211,6 @@
           </div>
         </article>
 
-        <!-- DATA FOR GOOD HACKATHON -->
-        <article class="card" aria-labelledby="proj-dfg">
-          <h3 id="proj-dfg">JP Morgan · Data for Good Hackathon</h3>
-          <div class="meta">
-            <span class="pill">Nonprofit</span>
-            <span class="pill">Random Forest Modeling</span>
-            <span class="pill">Exploratory Data Analysis</span>
-            <span class="pill">Data Cleaning and Preparation</span>
-            <span class="pill">Data Wrangling</span>
-          </div>
-          <p>Analyzed elementary reading-skills data; built a small pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
-          <p><strong>What I learned</strong></p>
-          <ul>
-            <li>Scoping <strong>impact-first metrics</strong> for non-technical stakeholders.</li>
-            <li>Balancing <strong>speed vs. rigor</strong> in timely settings.</li>
-            <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
-          </ul>
-          <div class="actions">
-            <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
-            <a class="link" href="#" target="_blank" rel="noopener">Add: Slides</a>
-          </div>
-        </article>
-
         <!-- CUSTOMER SANTANDER PROJECT -->
         <article class="card" aria-labelledby="proj-santander">
           <h3 id="proj-santander">Customer Santander Bank Project</h3>
@@ -161,8 +220,8 @@
             <span class="pill">Feature Selection</span>
           </div>
           <p>
-            Built and evaluated predictive models using Santander Bank’s anonymized customer dataset 
-            to identify potential clients for financial products. Focused on model interpretability and 
+            Built and evaluated predictive models using Santander Bank’s anonymized customer dataset
+            to identify potential clients for financial products. Focused on model interpretability and
             ethical data usage while balancing precision and recall.
           </p>
           <p><strong>Key learnings</strong></p>
@@ -178,7 +237,30 @@
           </div>
         </article>
 
-        <!-- EXISTING SHOWCASE (keep + clarify code status) -->
+        <!-- DATA FOR GOOD HACKATHON -->
+        <article class="card" aria-labelledby="proj-dfg">
+          <h3 id="proj-dfg">J.P. Morgan · Data for Good Hackathon</h3>
+          <div class="meta">
+            <span class="pill">Nonprofit</span>
+            <span class="pill">Random Forest</span>
+            <span class="pill">EDA</span>
+            <span class="pill">Data Cleaning</span>
+            <span class="pill">Data Wrangling</span>
+          </div>
+          <p>Analyzed elementary reading-skills data; built a lightweight pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
+          <p><strong>What I learned</strong></p>
+          <ul>
+            <li>Scoping <strong>impact-first metrics</strong> for non-technical stakeholders.</li>
+            <li>Balancing <strong>speed vs. rigor</strong> in time-boxed settings.</li>
+            <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
+          </ul>
+          <div class="actions">
+            <a class="link" href="#" target="_blank" rel="noopener">Add: GitHub repo</a>
+            <a class="link" href="#" target="_blank" rel="noopener">Add: Slides</a>
+          </div>
+        </article>
+
+        <!-- EXISTING SHOWCASE -->
         <article class="card" aria-labelledby="proj-hub">
           <h3 id="proj-hub">The Internship Hub (Accessibility-First)</h3>
           <div class="meta">
@@ -232,12 +314,12 @@
             <a class="link" href="#" aria-disabled="true">Add: links as they go public</a>
           </div>
         </article>
+
       </div>
     </section>
   </main>
+
   <footer>© <span id="year"></span> Dominique Bradshaw</footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

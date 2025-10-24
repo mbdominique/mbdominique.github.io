@@ -18,7 +18,7 @@
       --shadow:0 10px 30px rgba(0,0,0,.15);
       --radius:18px;
     }
-    *{box-sizing:border-box;cursor:url('https://cur.cursors-4u.net/others/oth-8/oth798.cur'), url('https://cur.cursors-4u.net/cursors/cur-2/cur148.cur'), auto;} /* fairy wand cursor with fallback */
+    *{box-sizing:border-box;cursor:url('https://cur.cursors-4u.net/others/oth-8/oth798.cur'), url('https://cur.cursors-4u.net/cursors/cur-2/cur148.cur'), auto;}
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -29,29 +29,31 @@
       transition: background 0.5s ease-in-out;
     }
     .container{max-width:1100px;margin:0 auto;padding:2rem;}
-header{text-align:center;padding:1.5rem 0;}
-h1{font-size:2.8rem;margin-bottom:.5rem;}
-nav a{margin:0 10px;text-decoration:none;color:var(--text);font-weight:600;}
-nav a:hover{color:var(--accent);}
-.hero-banner{padding:3rem 0;text-align:center;}
-.hero-card{background:rgba(255,255,255,.35);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);border-radius:18px;padding:24px;box-shadow:var(--shadow);display:inline-block;}
-.hero-title{font-size:clamp(26px,3.2vw,40px);margin:0;color:#2b2b2b;}
-.hero-sub{font-size:1.2rem;margin:8px 0;color:#333;}
-.hero-title:hover{ text-shadow:0 0 15px rgba(255,204,102,.9),0 0 30px rgba(255,170,50,.8); transition:text-shadow .3s ease;}
-.btn-primary{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,#ffd07a,#ff9a8b);color:#1a1a1a;text-decoration:none;font-weight:700;box-shadow:var(--shadow);margin:5px;}
-.btn-ghost{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.2);text-decoration:none;color:#1a1a1a;margin:5px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
-.card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(10px);}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
-.pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff;}
-footer{text-align:center;padding:1rem;color:#333;}
-</style>
+    header{text-align:center;padding:1.5rem 0;}
+    h1{font-size:2.8rem;margin-bottom:.5rem;}
+    nav a{margin:0 10px;text-decoration:none;color:var(--text);font-weight:600;}
+    nav a:hover{color:var(--accent);}
+    .hero-banner{padding:3rem 0;text-align:center;}
+    .hero-card{background:rgba(255,255,255,.35);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);border-radius:18px;padding:24px;box-shadow:var(--shadow);display:inline-block;}
+    .hero-title{font-size:clamp(26px,3.2vw,40px);margin:0;color:#2b2b2b;}
+    .hero-sub{font-size:1.2rem;margin:8px 0;color:#333;}
+    .hero-title:hover{ text-shadow:0 0 15px rgba(255,204,102,.9),0 0 30px rgba(255,170,50,.8); transition:text-shadow .3s ease;}
+    .btn-primary{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,#ffd07a,#ff9a8b);color:#1a1a1a;text-decoration:none;font-weight:700;box-shadow:var(--shadow);margin:5px;}
+    .btn-ghost{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.2);text-decoration:none;color:#1a1a1a;margin:5px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);backdrop-filter:blur(10px);}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+    .pill{font-size:.8rem;padding:4px 8px;border-radius:999px;background:var(--accent-2);color:#fff;}
+    footer{text-align:center;padding:1rem;color:#333;}
+    /* optional: define .lead since it's used */
+    .lead{opacity:.9;margin-bottom:1rem;}
+  </style>
 </head>
 <body>
-
+  <main class="container">
     <section id="projects" aria-label="Projects">
       <h2>Projects & Case Studies</h2>
-      <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real‑world data; public repos are linked where available.</p>
+      <p class="lead">Featured work across internship, coursework, and hackathons. Some code is private due to real-world data; public repos are linked where available.</p>
 
       <div class="grid">
         <!-- METAVERSE HORIZON QUEST ANALYTICS (NO CODE) -->
@@ -61,29 +63,28 @@ footer{text-align:center;padding:1rem;color:#333;}
             <span class="pill">Product Analytics</span>
             <span class="pill">VR/Quest</span>
             <span class="pill">SQL</span>
-            <span class="pill">SQL</span>
           </div>
-          <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale‑specific titles like JP‑language apps, Virtual Desktop, Steam Link).</p>
+          <p>Analyzed engagement for Quest experiences and peripherals (PCVR vs. native apps, Quest Pro vs. Quest 3/3S, locale-specific titles like JP-language apps, Virtual Desktop, Steam Link).</p>
           <p><strong>Hypotheses I tested</strong></p>
           <ul>
-            <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time‑spent per MAU</strong> than comparable native titles because of content breadth.</li>
-            <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price‑to‑value dynamics.</li>
-            <li><em>H3:</em> <strong>Locale‑specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session‑time distributions</strong> and store funnel behavior vs. global averages.</li>
+            <li><em>H1:</em> <strong>PCVR bridge apps</strong> (e.g., Virtual Desktop / Steam Link) drive <strong>higher time-spent per MAU</strong> than comparable native titles because of content breadth.</li>
+            <li><em>H2:</em> <strong>Quest 3/3S owners</strong> show higher <strong>retention after week 2</strong> than Quest Pro owners due to broader game fit and price-to-value dynamics.</li>
+            <li><em>H3:</em> <strong>Locale-specific apps</strong> (e.g., Japanese language) exhibit <strong>distinct session-time distributions</strong> and store funnel behavior vs. global averages.</li>
           </ul>
           <p><strong>Issues faced</strong></p>
           <ul>
-            <li>Attribution across <strong>PCVR vs. Explicity gaming related applications</strong> surfaces; session stitching and device/app identifiers.</li>
-            <li><strong>Sparse / long‑tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
-            <li><strong>Metric definition drift</strong> (time‑spent, MAU/WAU); standardized to canonical product metrics.</li>
+            <li>Attribution across <strong>PCVR vs. Explicitly gaming-related applications</strong> surfaces; session stitching and device/app identifiers.</li>
+            <li><strong>Sparse / long-tail titles</strong> skewing central tendency; required robust summaries and winsorization.</li>
+            <li><strong>Metric definition drift</strong> (time-spent, MAU/WAU); standardized to canonical product metrics.</li>
           </ul>
           <p><strong>How I grew</strong></p>
           <ul>
-            <li>Designed <strong>decision‑ready dashboards</strong> and wrote <strong>clear experiment readouts</strong> for PMs and leadership.</li>
-            <li>Tightened <strong>SQL + Python</strong> chops for large‑scale event data; added <strong>guardrails for cohorting</strong> and retention cuts.</li>
+            <li>Designed <strong>decision-ready dashboards</strong> and wrote <strong>clear experiment readouts</strong> for PMs and leadership.</li>
+            <li>Tightened <strong>SQL + Python</strong> chops for large-scale event data; added <strong>guardrails for cohorting</strong> and retention cuts.</li>
             <li>Improved <strong>stakeholder alignment</strong> (problem framing → metrics → caveats → next steps) under privacy constraints.</li>
           </ul>
           <div class="actions">
-            <span class="link" aria-disabled="true">Code private (real‑world data)</span>
+            <span class="link" aria-disabled="true">Code private (real-world data)</span>
           </div>
         </article>
 
@@ -95,7 +96,7 @@ footer{text-align:center;padding:1rem;color:#333;}
             <span class="pill">MetricFrame</span>
             <span class="pill">Model Audits</span>
           </div>
-          <p>Audited classification performance on a diabetes dataset across groups; explored <em>equalized odds</em>, <em>FPR/FNR parity</em>, and <em>demographic parity</em>. Implemented in‑processing (AdversarialFairnessClassifier) and post‑processing threshold optimization.</p>
+          <p>Audited classification performance on a diabetes dataset across groups; explored <em>equalized odds</em>, <em>FPR/FNR parity</em>, and <em>demographic parity</em>. Implemented in-processing (AdversarialFairnessClassifier) and post-processing threshold optimization.</p>
           <p><strong>What I learned</strong></p>
           <ul>
             <li>How <strong>fairness metrics trade off</strong> with accuracy and how to present that tradeoff to stakeholders.</li>
@@ -135,13 +136,13 @@ footer{text-align:center;padding:1rem;color:#333;}
             <span class="pill">Nonprofit</span>
             <span class="pill">Random Forest Modeling</span>
             <span class="pill">Exploratory Data Analysis</span>
-            <span class="pill"> Data Cleaning and Preperation</span>
-            <span class="pill"> Data Wrangling</span>
+            <span class="pill">Data Cleaning and Preparation</span>
+            <span class="pill">Data Wrangling</span>
           </div>
-          <p>Analyzed elementary reading‑skills data; built a small pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
+          <p>Analyzed elementary reading-skills data; built a small pipeline + dashboard to help staff track progress and target interventions. Informed potential future internship work.</p>
           <p><strong>What I learned</strong></p>
           <ul>
-            <li>Scoping <strong>impact‑first metrics</strong> for non‑technical stakeholders.</li>
+            <li>Scoping <strong>impact-first metrics</strong> for non-technical stakeholders.</li>
             <li>Balancing <strong>speed vs. rigor</strong> in timely settings.</li>
             <li>Packaging results into a <strong>clear, actionable presentation</strong>.</li>
           </ul>
@@ -150,6 +151,7 @@ footer{text-align:center;padding:1rem;color:#333;}
             <a class="link" href="#" target="_blank" rel="noopener">Add: Slides</a>
           </div>
         </article>
+
         <!-- CUSTOMER SANTANDER PROJECT -->
         <article class="card" aria-labelledby="proj-santander">
           <h3 id="proj-santander">Customer Santander Bank Project</h3>
@@ -178,13 +180,13 @@ footer{text-align:center;padding:1rem;color:#333;}
 
         <!-- EXISTING SHOWCASE (keep + clarify code status) -->
         <article class="card" aria-labelledby="proj-hub">
-          <h3 id="proj-hub">The Internship Hub (Accessibility‑First)</h3>
+          <h3 id="proj-hub">The Internship Hub (Accessibility-First)</h3>
           <div class="meta">
             <span class="pill">Flask</span>
             <span class="pill">SQLite</span>
             <span class="pill">A11y</span>
           </div>
-          <p>Screen‑reader compatibility, focus management, and keyboard navigation for a student internship portal; prioritized inclusive UX.</p>
+          <p>Screen-reader compatibility, focus management, and keyboard navigation for a student internship portal; prioritized inclusive UX.</p>
           <div class="actions">
             <a class="link" href="https://github.com/yvonnecheng0/final_project/tree/main" target="_blank" rel="noopener">GitHub →</a>
           </div>
@@ -194,7 +196,7 @@ footer{text-align:center;padding:1rem;color:#333;}
           <h3 id="proj-spotify">Spotify Features & Recommender</h3>
           <div class="meta">
             <span class="pill">Python</span>
-            <span class="pill">scikit‑learn</span>
+            <span class="pill">scikit-learn</span>
             <span class="pill">Dagster</span>
           </div>
           <p>Feature engineering + hit prediction and playlist generation; orchestrated with Dagster for reliable data refresh.</p>
@@ -217,13 +219,13 @@ footer{text-align:center;padding:1rem;color:#333;}
           </div>
         </article>
 
-        <!-- CATCH‑ALL LIST (so "every" project has a home) -->
+        <!-- CATCH-ALL LIST -->
         <article class="card" aria-labelledby="proj-more">
           <h3 id="proj-more">More Projects & Software</h3>
           <p>A running list of smaller DS/SE builds (coursework, utilities, talks). I can split these into full case studies upon request.</p>
           <ul>
-            <li>Adversarial debiasing α‑sweep write‑up (code overlap with RDS project).</li>
-            <li>Recipe‑by‑ingredients Flask app (Spoonacular API, SQLite cache).</li>
+            <li>Adversarial debiasing α-sweep write-up (code overlap with RDS project).</li>
+            <li>Recipe-by-ingredients Flask app (Spoonacular API, SQLite cache).</li>
             <li>Internship management platform (ChatGPT mock interviews integration).</li>
           </ul>
           <div class="actions">
@@ -239,4 +241,3 @@ footer{text-align:center;padding:1rem;color:#333;}
   </script>
 </body>
 </html>
-
